@@ -10,6 +10,7 @@ defmodule PlugDeploy.Application do
     children = [
       # Starts a worker by calling: PlugDeploy.Worker.start_link(arg)
       # {PlugDeploy.Worker, arg},
+      Plug.Adapters.Cowboy.child_spec(:http, PlugDeploy.Router, [], [port: 4000])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
